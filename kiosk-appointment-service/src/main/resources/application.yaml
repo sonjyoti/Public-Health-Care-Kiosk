@@ -1,0 +1,32 @@
+server:
+  port: 8081 # server port where this service runs
+
+spring:
+  application:
+    name: kiosk-appoinment-service # application name
+
+  datasource: # database configuration
+    url: jdbc:postgresql://localhost:5432/appt_db
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update # auto create/update tables through hibernate
+    show-sql: true # shows sql queries in console
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+eureka: # connects service to eureka
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    com.kiosk.kioskappointmentservice: DEBUG
