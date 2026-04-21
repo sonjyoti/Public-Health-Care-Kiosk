@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: kiosk-appoinment-service # application name
+    name: kiosk-appointment-service # application name
 
   datasource: # database configuration
     url: jdbc:postgresql://localhost:5432/appt_db
