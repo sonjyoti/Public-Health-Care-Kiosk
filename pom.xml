@@ -11,7 +11,7 @@
         <module>kiosk-discovery</module>
         <module>kiosk-gateway</module>
         <module>kiosk-appointment-service</module>
-<!--        <module>kiosk-availability-service</module>-->
+        <module>kiosk-availability-service</module>
 <!--        <module>kiosk-recommendation-service</module>-->
 <!--        <module>kiosk-forms-service</module>-->
     </modules>

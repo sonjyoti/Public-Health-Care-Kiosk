@@ -1,0 +1,9 @@
+### PATCH appointments by id (used to make partial modifications to an existing resource)
+PATCH http://localhost:8080/api/appointments/957ed461-e670-4297-a584-37309ab53d59/status
+Content-Type: application/json
+
+{
+  "status": "CALLED"
+}
+
+###

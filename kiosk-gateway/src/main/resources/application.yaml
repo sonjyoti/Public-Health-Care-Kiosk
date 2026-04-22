@@ -15,6 +15,12 @@ spring:
           uri: lb://kiosk-appointment-service
           predicates:
             - Path=/api/appointments/**
+
+        - id: availability-service
+          uri: lb://kiosk-availability-service
+          predicates:
+            - Path=/api/availability/**
+
       globalcors:
         cors-configurations:
           '[/**]':

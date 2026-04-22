@@ -1,0 +1,4 @@
+### GET request to obtain the departments
+GET http://localhost:8080/api/appointments/departments
+
+###
