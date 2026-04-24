@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "time_slots")
 @Data
@@ -22,6 +24,9 @@ public class TimeSlot {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "schedule_id", nullable = false)
     private Schedule schedule;
+
+    @Column(name = "slot_datetime", nullable = false)
+    private LocalDateTime slotDatetime;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status",  nullable = false)

@@ -16,7 +16,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Builder
 public class LeaveBlock {
-
+// LeaveBlock represents a period of time when a doctor is unavailable — it's the mechanism that lets hospital staff mark a doctor as temporarily absent without deleting or modifying their permanent schedule.
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
