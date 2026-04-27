@@ -1,0 +1,12 @@
+### create a schedule for the doctor with given id
+POST http://localhost:8080/api/availability/schedules
+Content-Type: application/json
+
+{
+  "doctorId": "ff869b5c-a6ff-41fb-aef1-285a6ce7a32c",
+  "dayOfWeek": "MONDAY",
+  "startTime": "09:00",
+  "endTime": "13:00",
+  "slotDurationMins": 15
+}
+###

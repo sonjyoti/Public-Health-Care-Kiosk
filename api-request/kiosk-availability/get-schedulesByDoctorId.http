@@ -1,0 +1,4 @@
+### GET all schdules for a particular doctor
+GET http://localhost:8080/api/availability/slots/doctor/ff869b5c-a6ff-41fb-aef1-285a6ce7a32c/open
+
+###

@@ -1,0 +1,13 @@
+### create a doctor using POST
+POST http://localhost:8080/api/availability/doctors
+Content-Type: application/json
+
+{
+  "name": "Dr. Dipsikha Koch",
+  "qualification": "MD",
+  "yearsExperience": 10,
+  "specialization": "CARDIO",
+  "departmentCode": "CARDIO"
+}
+
+###
