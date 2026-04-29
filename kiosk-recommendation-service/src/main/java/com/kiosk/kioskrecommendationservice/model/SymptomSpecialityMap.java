@@ -19,7 +19,7 @@ public class SymptomSpecialityMap {
     private String id;
 
     @Column(name = "symptom_keyword", nullable = false)
-    private String keyword;
+    private String symptomKeyword;
 
     @Column(name = "specialization", nullable = false)
     private String specialization;
