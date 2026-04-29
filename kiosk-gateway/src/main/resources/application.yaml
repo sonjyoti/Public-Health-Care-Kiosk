@@ -21,6 +21,11 @@ spring:
           predicates:
             - Path=/api/availability/**
 
+        - id: recommendation-service
+          uri: lb://kiosk-recommendation-service
+          predicates:
+            - Path=/api/recommend/**
+
       globalcors:
         cors-configurations:
           '[/**]':
