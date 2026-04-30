@@ -1,0 +1,10 @@
+### POST method for retrieving recommended doctors
+POST http://localhost:8080/api/recommend
+Content-Type: application/json
+
+{
+    "departmentCode": "CARDIO",
+    "symptomKeyword": "chest pain"
+}
+
+###

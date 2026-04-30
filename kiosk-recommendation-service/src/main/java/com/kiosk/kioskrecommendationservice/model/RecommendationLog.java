@@ -33,7 +33,7 @@ public class RecommendationLog {
     private double finalScore;
 
     @Column(name = "rank_position")
-    private String rankPosition;
+    private int rankPosition;
 
     @Column(name = "recommended_at")
     private LocalDateTime recommendedAt;

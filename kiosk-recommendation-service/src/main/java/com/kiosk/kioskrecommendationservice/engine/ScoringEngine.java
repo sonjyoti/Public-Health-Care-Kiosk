@@ -27,7 +27,7 @@ public class ScoringEngine {
     private static final double DEFAULT_W_SPECIALIZATION = 0.30;
     private static final double DEFAULT_W_LOAD = 0.15;
 
-    private List<DoctorScore> score(List<DoctorResponse> doctors,
+    public List<DoctorScore> score(List<DoctorResponse> doctors,
                                     String targetSpecialization,
                                     Map<String, Long> loadMap){
         double wQual = getWeight("W_QUALIFICATION", DEFAULT_W_QUALIFICATION);
