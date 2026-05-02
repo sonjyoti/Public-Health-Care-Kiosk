@@ -6,6 +6,7 @@ import com.kiosk.kioskrecommendationservice.dto.DoctorScore;
 import com.kiosk.kioskrecommendationservice.dto.RecommendationRequest;
 import com.kiosk.kioskrecommendationservice.dto.RecommendationResponse;
 import com.kiosk.kioskrecommendationservice.engine.ScoringEngine;
+import com.kiosk.kioskrecommendationservice.exception.AvailabilityServiceException;
 import com.kiosk.kioskrecommendationservice.model.RecommendationLog;
 import com.kiosk.kioskrecommendationservice.model.SymptomSpecialityMap;
 import com.kiosk.kioskrecommendationservice.repository.RecommendationLogRepository;
@@ -55,8 +56,19 @@ public class RecommendationService {
         );
 
         // fetch available doctors from availability service
-        List<DoctorResponse> doctors = availabilityClient
-                .getDoctorsByDepartment(request.getDepartmentCode());
+        List<DoctorResponse> doctors;
+
+        try{
+            doctors = availabilityClient
+                    .getDoctorsByDepartment(request.getDepartmentCode());
+        } catch (feign.FeignException e){
+            log.error("Failed to fetch doctors from availability service: {}",
+                    e.getMessage());
+            throw new AvailabilityServiceException(
+                    "Could not fetch doctors from department: "
+                    + request.getDepartmentCode(), e
+            );
+        }
 
         if (doctors == null || doctors.isEmpty()) {
             return RecommendationResponse.builder()
