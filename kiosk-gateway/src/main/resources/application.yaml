@@ -26,6 +26,11 @@ spring:
           predicates:
             - Path=/api/recommend/**
 
+        - id: forms-service
+          uri: lb://kiosk-forms-service
+          predicates:
+            - Path=/api/forms/**
+
       globalcors:
         cors-configurations:
           '[/**]':
