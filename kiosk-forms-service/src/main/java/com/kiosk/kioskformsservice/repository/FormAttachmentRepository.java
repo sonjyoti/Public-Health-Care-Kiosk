@@ -1,6 +1,6 @@
 package com.kiosk.kioskformsservice.repository;
 
-import model.FormAttachment;
+import com.kiosk.kioskformsservice.model.FormAttachment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

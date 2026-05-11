@@ -1,4 +1,4 @@
-package model;
+package com.kiosk.kioskformsservice.model;
 
 import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;

@@ -1,4 +1,4 @@
-package model;
+package com.kiosk.kioskformsservice.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

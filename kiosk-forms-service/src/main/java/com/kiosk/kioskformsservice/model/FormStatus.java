@@ -1,4 +1,4 @@
-package model;
+package com.kiosk.kioskformsservice.model;
 
 public enum FormStatus {
     SUBMITTED,

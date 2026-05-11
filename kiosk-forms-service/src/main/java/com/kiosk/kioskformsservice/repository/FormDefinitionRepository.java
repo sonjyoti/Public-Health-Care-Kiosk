@@ -1,6 +1,6 @@
 package com.kiosk.kioskformsservice.repository;
 
-import model.FormDefinition;
+import com.kiosk.kioskformsservice.model.FormDefinition;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

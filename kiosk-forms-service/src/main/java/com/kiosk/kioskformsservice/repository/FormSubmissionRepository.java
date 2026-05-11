@@ -1,7 +1,7 @@
 package com.kiosk.kioskformsservice.repository;
 
-import model.FormStatus;
-import model.FormSubmission;
+import com.kiosk.kioskformsservice.model.FormStatus;
+import com.kiosk.kioskformsservice.model.FormSubmission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
