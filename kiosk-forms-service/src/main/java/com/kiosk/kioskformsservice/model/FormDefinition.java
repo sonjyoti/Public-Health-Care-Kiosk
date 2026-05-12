@@ -34,7 +34,7 @@ public class FormDefinition {
 
     @Type(JsonBinaryType.class)
     @Column(name = "field_schema", columnDefinition = "jsonb")
-    private JsonBinaryType fieldSchema;
+    private String fieldSchema;
 
     @Column(name = "is_active")
     private boolean isActive = true;
