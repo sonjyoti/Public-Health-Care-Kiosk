@@ -66,7 +66,7 @@ API Gateway :8080
       ├──▶ Appointment Service    :8081  ──▶  appt_db  (PostgreSQL)
       ├──▶ Availability Service   :8082  ──▶  avail_db (PostgreSQL)
       ├──▶ Recommendation Service :8083  ──▶  rec_db   (PostgreSQL) + Redis
-      └──▶ Forms Service          :8084  ──▶  forms_db (PostgreSQL)  [planned]
+      └──▶ Forms Service          :8084  ──▶  forms_db (PostgreSQL)
 
 Eureka Discovery Server :8761
 ```
@@ -106,7 +106,7 @@ Recommendation Service
 | `kiosk-appointment-service` | 8081 | ✅ Complete | OPD booking, token generation, audit trail |
 | `kiosk-availability-service` | 8082 | ✅ Complete | Doctor management, schedules, time slots, leave blocks |
 | `kiosk-recommendation-service` | 8083 | ✅ Complete | Weighted scoring engine, Redis caching, recommendation logs |
-| `kiosk-forms-service` | 8084 | 📋 Planned | Public health form submissions |
+| `kiosk-forms-service` | 8084 | ✅ Complete | Public health form submissions |
 
 ---
 
@@ -159,7 +159,7 @@ Each microservice owns an isolated database. No cross-service foreign key constr
 | `scoring_weights` | Configurable w1–w4 weights for the scoring formula |
 | `recommendation_log` | Audit trail of every recommendation made |
 
-### `forms_db` — Forms Service *(planned)*
+### `forms_db` — Forms Service 
 
 | Table | Purpose |
 |---|---|
@@ -222,8 +222,14 @@ healthcare-kiosk/
 │       ├── config/                       ← RedisConfig
 │       └── exception/                    ← GlobalExceptionHandler
 │
-└── kiosk-forms-service/                  ← planned
-```
+└── kiosk-forms-service/
+└── src/main/java/com/kiosk/forms/
+│       ├── model/                        ← FormAttachment, FormDefinition, FormStatus, FormSubmission
+│       ├── repository/                   ← FormAttachmentRepository, FormDefinitionRepository, FormSubmissionRepository
+│       ├── dto/                          ← FormDefinitionRequest, FormDefinitionResponse, FormSubmissionRequest, FormSubmissionResponse, StatusUpdateRequest
+│       ├── service/                      ← FormDefinitionService, FormSubmissionService
+│       ├── controller/                   ← FormDefinitionController, FormSubmissionController
+│       └── exception/                    ← ErrorResponse, GlobalExceptionHandler                
 
 ---
 
@@ -267,6 +273,46 @@ VALUES
   (gen_random_uuid(), 'fracture',    'ORTHO',   1.0),
   (gen_random_uuid(), 'skin rash',   'DERMA',   1.0),
   (gen_random_uuid(), 'eye problem', 'OPHTHA',  1.0);
+```
+
+### Seed form definitions
+
+```sql
+INSERT INTO form_definitions
+(form_type, display_name, display_name_hi,
+ display_name_as, field_schema, is_active)
+VALUES
+    (
+        'BLOOD_DONATION',
+        'Blood Donation Form',
+        'रक्त दान फॉर्म',
+        'তেজ দান ফৰ্ম',
+        '{"fields":[
+            {"name":"bloodGroup","type":"select",
+             "options":["A+","A-","B+","B-","O+","O-","AB+","AB-"],
+             "required":true},
+            {"name":"age","type":"number","required":true},
+            {"name":"weight","type":"number","required":true},
+            {"name":"lastDonated","type":"date","required":false},
+            {"name":"medicalConditions","type":"text","required":false}
+        ]}',
+        true
+    ),
+    (
+        'REFERRAL',
+        'Patient Referral Form',
+        'रोगी रेफरल फॉर्म',
+        'ৰোগী ৰেফাৰেল ফৰ্ম',
+        '{"fields":[
+            {"name":"referredFrom","type":"text","required":true},
+            {"name":"referredTo","type":"text","required":true},
+            {"name":"diagnosis","type":"text","required":true},
+            {"name":"urgencyLevel","type":"select",
+             "options":["LOW","MEDIUM","HIGH","CRITICAL"],
+             "required":true}
+        ]}',
+        true
+    );
 ```
 
 ### Running Redis
@@ -413,9 +459,9 @@ Content-Type: application/json
 - [x] Appointment service — anonymous booking, token generation, status management, audit trail
 - [x] Availability service — doctor management, schedule management, slot generation, leave blocking
 - [x] Recommendation service — weighted scoring engine, Feign client, Redis caching, symptom mapping, recommendation logs
+- [x] Forms service — dynamic form definitions and JSONB submissions
 
 ### 📋 Planned
-- [ ] Forms service — dynamic form definitions and JSONB submissions
 - [ ] Notification service — token slip printing, SMS alerts
 - [ ] Admin panel — staff management interface with RBAC
 - [ ] Docker Compose — full stack orchestration
