@@ -47,8 +47,8 @@ The system provides a touch-first, multilingual, icon-driven kiosk interface bac
 - ✅ **Token slip generation** — printable QR-coded token for the patient
 - ✅ **Leave block management** — staff can block doctor availability without modifying schedules
 - ✅ **Appointment audit trail** — every status change is logged immutably
-- 📋 **Digital public health forms** — blood donation, referral requests *(planned)*
-- 📋 **Multilingual support** — Assamese, Hindi, English *(planned)*
+- ✅ **Digital public health forms** — blood donation, referral requests 
+- ✅ **Multilingual support** — Assamese, Hindi, English 
 - 📋 **Offline resilient** — local caching with background sync *(planned)*
 
 ---
