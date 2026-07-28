@@ -1,0 +1,10 @@
+### UPDATE status
+
+PATCH http://localhost:8080/api/forms/submissions/6185e256-8d86-48e2-9a29-168e39fb6e41/status
+Content-Type: application/json
+
+{
+  "status": "COMPLETED"
+}
+
+###

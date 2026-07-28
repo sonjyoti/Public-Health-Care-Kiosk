@@ -1,0 +1,3 @@
+### GET submission by session token
+
+GET http://localhost:8080/api/forms/submissions/session/test-session-001

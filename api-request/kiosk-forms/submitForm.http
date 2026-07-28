@@ -1,0 +1,11 @@
+### Submit a blood donation form
+POST http://localhost:8080/api/forms/submissions
+Content-Type: application/json
+
+{
+  "formType": "BLOOD_DONATION",
+  "sessionToken": "test-session-001",
+  "formData": "{\"bloodGroup\":\"O+\",\"age\":28,\"weight\":65,\"medicalConditions\":\"none\"}"
+}
+
+###
